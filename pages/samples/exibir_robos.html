@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Robôs</title>
+  <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="../../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class=" container-scroller">
+    <!-- partial:../../partials/_navbar.html -->
+    <nav class="navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="bg-white text-center navbar-brand-wrapper">
+        <a class="navbar-brand brand-logo" href="../../index.html"><img src="../../images/logo jerico.png" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../../index.html"><img src="../../images/logo_star_mini.jpg"
+            alt=""></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center">
+        <button class="navbar-toggler navbar-toggler d-none d-lg-block navbar-dark align-self-center mr-3" type="button"
+          data-toggle="minimize">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <form class="form-inline mt-2 mt-md-0 d-none d-lg-block">
+          <input class="form-control mr-sm-2 search" type="text" placeholder="Search">
+        </form>
+        <button class="navbar-toggler navbar-dark navbar-toggler-right d-lg-none align-self-center" type="button"
+          data-toggle="offcanvas">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- partial -->
+    <div class="container-fluid">
+      <div class="row row-offcanvas row-offcanvas-right">
+        <!-- partial:../../partials/_sidebar.html -->
+        <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
+          <div class="user-info">
+            <img src="../../images/face.jpg" alt="">
+            <p class="name">Bernardo Rodrigues</p>
+            <p class="designation">Manager</p>
+          </div>
+          <ul class="nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="../../index.html">
+                <img src="../../images/icons/1.png" alt="">
+                <span class="menu-title">Dashboard</span>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#clientes" aria-expanded="false" aria-controls="clientes">
+                <img src="../../images/profile.jpg" alt="">
+                <span class="menu-title">Clientes<i class="fa fa-sort-down"></i></span>
+              </a>
+              <div class="collapse" id="clientes">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/obter_clientes.html">
+                      Obter todos os<br>clientes
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#sample-pages" aria-expanded="false"
+                aria-controls="sample-pages">
+                <img src="../../images/profile.jpg" alt="">
+                <span class="menu-title">Usuários<i class="fa fa-sort-down"></i></span>
+              </a>
+              <div class="collapse" id="sample-pages">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/register.html">
+                      Criar novo usuário
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/alterar_senha.html">
+                      Alterar senha<br>do usuário
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="">
+                      Ativar/Inativar<br>usuário
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/exibir_usuarios.html">
+                      Exibir todos usuários
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/login.html">
+                      Trocar usuário
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="collapse" href="#consignatarias" aria-expanded="false" aria-controls="consignatarias">
+                <img src="../../images/profile.jpg" alt="">
+                <span class="menu-title">Consignatárias<i class="fa fa-sort-down"></i></span>
+              </a>
+              <div class="collapse" id="consignatarias">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/consignatarias.html">
+                      Obter consignatárias
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/cadastrar_consignataria.html">
+                      Cadastrar uma<br>consignatária
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/">
+                      Alterar uma<br>consignatária
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/excluir_consignataria.html">
+                      Excluir uma<br>consignatária
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="../../pages/samples/">
+                      Obter Robôs
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="">
+                <img src="../../images/icons/10.png" alt="">
+                <span class="menu-title">Extrato</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="">
+                <img src="../../images/icons/10.png" alt="">
+                <span class="menu-title">Logs</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="sair">
+                <img src="../../images/icons/10.png" alt="">
+                <span class="menu-title">Sair</span>
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+
+        <!-- partial -->
+        <div class="content-wrapper">
+          <div class="content-wrapper">
+            <!-- Adiciona um novo elemento div para exibir a lista de usuários -->
+            <div id="robos" class="container">
+              <!-- A lista de usuários será exibida aqui -->
+            </div>
+          </div>
+        </div>
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+          <div class="container-fluid clearfix">
+            <span class="float-right">
+              <a href="#">Admin</a> &copy; 2023
+            </span>
+          </div>
+        </footer>
+
+        <!-- partial -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="../../node_modules/perfect-scrollbar/dist/js/perfect-scrollbar.jquery.min.js"></script>
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/misc.js"></script>
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+
+
+  <script src="../../API's/login.js"></script>
+  <script src="../../API's/consignatarias/exibir_robos.js"></script>
+</body>
+
+</html>
