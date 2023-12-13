@@ -11,6 +11,35 @@
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="shortcut icon" href="../../images/favicon.png" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 150px;
+    }
+
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+    #sidebar {
+      position: fixed;
+    }
+    @media only screen and (max-width: 991px) {
+      #sidebar {
+        position: absolute;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -38,7 +67,7 @@
     <div class="container-fluid">
       <div class="row row-offcanvas row-offcanvas-right">
         <!-- partial:../../partials/_sidebar.html -->
-        <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar">
+        <nav class="bg-white sidebar sidebar-offcanvas" id="sidebar"  >
           <div class="user-info">
             <img src="../../images/perfiljerico.png" alt="">
             <p class="name">Daniel Jericó</p>
@@ -158,49 +187,94 @@
 
           </ul>
         </nav>
-
-        <!-- partial -->
-        <div class="content-wrapper">
-          <form class="form-inline mt-2 mt-md-0 d-none d-lg-block">
-            <input class="form-control mr-sm-2 search" type="text" placeholder="Pesquisar" style="border-radius: 6%;">
-            <button type="button" class="btn btn-primary mr-2" style="border-radius: 15%;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-            </svg></button>
-          </form><br>
-            <div class="row mb-2">
-                <div class="col-lg-12">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title mb-4">Clientes</h5>
-                      <div class="table-responsive">
-                        <table id="tabela-clientes" class="table center-aligned-table">
-                          <div id="loading" class="loading-container">
-                            <div class="spinner"></div>
-                          </div>
-                          <thead>
-                            <tr class="text-primary">
-                              <th>ID</th>
-                              <th>Nome</th>
-                              <th>CPF</th>
-                              <th>Consignatária</th>
-                              <th>ProcessamentoID</th>
-                              <th>Status</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                          </tbody>
-                        </table>
+        <main class="container" style="margin-bottom: 4%;">
+          <div class="bg-trasparent p-5 rounded" style="margin-top: 5%; border-radius: 10px; box-shadow: 0 5px 8px 8px rgba(0,0,0,0.1);">
+              <form>
+                  <input type="hidden" name="csrfmiddlewaretoken" value="PYKAeZJbQhWukmnGcO3yRRMKugXyJ6aQ919gubRW9PNy38kzgmS3i2uG4Sz8sVVY">
+                  <div class="row" class="formulariocel">
+                      <div class="col-sm-7" style="display: flex; align-items: baseline;" id="teste">
+                        <label style="width: 50%; margin-right: 2%;">Informe o CPF para consulta:</label>
+                          <input type="text" class="form-control" id="cpf" placeholder="CPF" name="cpf">
+                      </div>
+                      <div class="col">
+                          <button style="padding: 2%;" type="button" id="consulta" onclick="getExtrato()" class="btn btn-primary">Consultar</button>
+                      </div>
+                      <div id="naoencontrado" class="col-sm-12 d-none text-center" style="padding-top:35px;">
+                         <h2 class="text-center"> Cliente não encontrado</h2>
                       </div>
                     </div>
-                  </div>
+                  
+              </form>
+          </div>
+              <br><br>
+              <div id="tabelaServidores" class="tabelass">  
+                <div class="row mb-2">
+                          <div class="col-lg-12">
+                            <div class="card">
+                              <div class="card-body">
+                                <h5 class="card-title mb-4">Dados dos Servidores</h5>
+                                <div class="table-responsive">
+                                  <table class="table center-aligned-table">
+                              <thead>
+                                <tr style="color: blue;">
+                                  <th>Servidor</th>
+                                  <th>Matrícula</th>
+                                  <th>CPF</th>
+                                  <th>Serviço</th>
+                                  <th>Margem Disponível</th>
+                                  <th>Margem Total</th>
+                                </tr>
+                              </thead>
+                    <tbody>
+                                    </tbody>
+                                  </table>
+              
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                 </div>
-              </div>
-        </div>
-        <!-- partial:../../partials/_footer.html -->
-        <footer class="footer">
+            
+                <div id="tabelaConsignacoes" class="tabelass" style="width: 100%;" >  
+                  <div class="row mb-2">
+                            <div class="col-lg-12">
+                              <div class="card">
+                                <div class="card-body">
+                                  <h5 class="card-title mb-4">Consignações</h5>
+                                  <div class="table-responsive">
+                                    <table class="table center-aligned-table">
+                                <thead>
+                                  <tr style="color: blue;">
+                      <th>Consignataria</th>
+                      <th>Situação</th>
+                      <th>Serviço</th>
+                      <th>ADE</th>
+                      <th>Qtd Prestações</th>
+                      <th>Prestações Pagas</th>
+                      <th>Valor Prestação</th>
+                      <th>Deferimento</th>
+                      <th>Quitação</th>
+                      <th>Último Desconto</th>
+                      <th>Última Parcela</th>
+                                  </tr>
+                                </thead>
+                      <tbody>
+                                      </tbody>
+                                    </table>
+                
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                  </div>
+          
+  </main>
+        <footer class="footer" style="position: fixed; bottom: 0; z-index: 1;">
           <div class="container-fluid clearfix">
             <span class="float-right">
-              <a href="#">Admin</a> &copy; 2023
+              <a href="#">Jaericó</a> &copy; 2023
             </span>
           </div>
         </footer>
@@ -223,10 +297,153 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
 
-
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 
   <script src="../../API's/login.js"></script>
   <script src="../../API's/clientes/obter_clientes.js"></script>
+
+
+  <script>
+    
+
+    function getSituacao(newData){
+        var table_situacao  = "<div class='searchPanes'></div><table id='table_situacao_dt' class='display nowrap compact'><thead><tr>";
+                    $.each(newData.situacao.titulos, function (i, titulos) {
+                        table_situacao =  table_situacao +"<th>"+ titulos +"</th>";
+                    })
+                    var situacao = [];
+                    table_situacao = table_situacao + "</tr></thead><tbody><tr>";
+                    $.each(newData.situacao.conteudo, function (i, conteudo) {
+                        $.each(conteudo, function (i, ctd) {
+                            if (i == 1){
+                                situacao.push(ctd);
+                            }
+                            table_situacao =  table_situacao +"<td>"+ ctd +"</td>";
+                        });
+                        table_situacao = table_situacao + "</tr>";
+                    });
+
+                    let _situacao = Array.from(new Set(situacao));
+                    var options = "";
+                    $.each(_situacao, function (i, ctd) {
+                            options += "<option value='"+ctd+"'>"+ctd+"</option>";
+                        });
+
+                    table_situacao = table_situacao + "</tbody></table>";
+                    // table_situacao 
+                    // = " <div class='row' style='margin-bottom: -10px;'><div class='col-sm-2 text-right'>Filtrar pela situação:</div><div class='col-sm-4'><select id='filtro' onchange='ChangeFiltro()' class='form-select form-select-sm filtro' aria-label='.form-select-sm example'>"+
+                    // "<option selected>Todas</option>"+
+                    // options+
+                    // "</select></div></div>" + table_situacao;
+
+        return table_situacao;
+    }
+    function ChangeFiltro(){
+        console.log("ok")
+        
+        var selectVal = $("#filtro option:selected").val();
+        setFilter(selectVal);
+    }
+    function setFilter(filter){
+        var table = $('#table_situacao_dt').DataTable();
+        table.search( "" );
+        if(filter != 'Todas'){
+            table.search( filter );
+        }
+
+        table.draw();
+    }
+
+    function getRetorno(newData){
+
+        var table_retorno  = "<table id='table_retorno_dt' class='display nowrap'><thead><tr>";
+            
+        $.each(newData.retorno.titulos, function (i, titulos) {
+            table_retorno =  table_retorno +"<th>"+ titulos +"</th>";
+        })
+        
+        table_retorno = table_retorno + "</tr></thead><tbody><tr>";
+            
+        $.each(newData.retorno.conteudo, function (i, conteudo) {
+            $.each(conteudo, function (i, ctd) {
+                table_retorno =  table_retorno +"<td>"+ ctd +"</td>";
+            });
+            table_retorno = table_retorno + "</tr>";
+        });
+
+        table_retorno = table_retorno + "</tbody></table>";
+        return table_retorno;
+    }
+    
+    
+    function getExtrato() {
+        let tabelas = document.getElementsByClassName('tabelass');
+
+        controlExibicao("Consultando");
+        $.ajax({
+                url: "http://carlosjunior007-001-site1.etempurl.com/api/extrato?cpf="+$( "#cpf" ).val().replace(/([^\d])+/gim, ''),
+                type: "GET",
+                success: function(dados){
+                  console.log(dados)
+                  function criarLinhasTabela(dados, tabelaId) {
+                    const tabela = document.getElementById(tabelaId);
+                    const tbody = tabela.querySelector('tbody');
+
+                    tbody.innerHTML = '';
+
+                    dados.forEach(item => {
+                      const linha = document.createElement('tr');
+
+                      Object.values(item).forEach(valor => {
+                        const coluna = document.createElement('td');
+                        coluna.textContent = valor;
+                        linha.appendChild(coluna);
+                      });
+
+                      tbody.appendChild(linha);
+                    });
+                  }
+
+                criarLinhasTabela(dados.dadosServidores, 'tabelaServidores');
+                criarLinhasTabela(dados.consignacoes, 'tabelaConsignacoes');
+                    
+                  
+                for (let i = 0; i < tabelas.length; i++) {
+                tabelas[i].classList.remove('d-none');
+            }
+
+                },
+                error: function(error){
+                    console.log(error.status);
+                    if(error.status == 403){
+                        alert("Ops, Login multiplo identificado ou sessão expirada, favor logar novamente.");
+                        window.location.href = "/";
+                    } 
+                }
+            });
+    }
+    function controlExibicao(contains){
+        $('#consulta').removeClass("btn-secondary").attr("disabled", false).html("Consultar");
+        
+        if(contains == "Consultando"){
+            $('#consulta').addClass("btn-secondary").attr("disabled", true).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Realizando consulta');
+            $('#naoencontrado').addClass("d-none");
+            $('#table_situacao').empty();
+            $('#table_retorno').empty();
+        }
+
+        else if(contains == false){
+            $('#table_situacao').empty();
+            $('#table_retorno').empty();
+            $('#naoencontrado').removeClass("d-none");
+            
+        }
+        
+        
+        
+
+    }
+</script>
 </body>
 
 </html>

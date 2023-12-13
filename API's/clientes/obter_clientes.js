@@ -12,7 +12,7 @@ function getCookie(cname) {
 }
 
 async function obterClientes() {
-    const url = 'http://carlosjunior007-001-site1.etempurl.com/api/clientes/obter-cliente/335e08e5-192d-45a9-998e-67841bfce3dc';
+  const url = 'http://carlosjunior007-001-site1.etempurl.com/api/clientes/obter-cliente/c1d36534-f386-4867-a392-46ac915fc724';
 
     try {
 
@@ -34,7 +34,6 @@ async function obterClientes() {
           dataArray.forEach((clientes, index) => {
             const novaLinha = document.createElement('tr');
             novaLinha.innerHTML = `
-                <th scope="row">${index + 1}</th>
                 <td class="nome">${clientes.Nome}</td>
                 <td class="codigo">${clientes.CPF}</td>
                 <td class="usuario">${clientes.Consignatária}</td>
