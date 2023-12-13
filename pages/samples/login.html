@@ -9,7 +9,21 @@
   <link rel="stylesheet" href="../../node_modules/font-awesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="../../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.min.css" />
   <link rel="stylesheet" href="../../css/style.css" />
-  <link rel="shortcut icon" href="../../images/favicon.png" />
+  <link rel="shortcut icon" href="../../images/minijericologo.png" />
+
+  <style>
+    #pagpadrao {
+      display: flex;
+    }
+    @media screen and (max-width: 920px){
+      #pagpadrao {
+        display: inline;
+      }
+      #logopagpadrao {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -17,7 +31,10 @@
   <div class="container-scroller" id="fundologin">
     <div class="container-fluid">
       <div class="row">
-        <div class="content-wrapper full-page-wrapper d-flex align-items-center auth-pages" style="background-image: linear-gradient(darkblue, #00008b9c);">
+        <div id="pagpadrao" class="content-wrapper full-page-wrapper align-items-center auth-pages" style="background-color: rgba(7, 41, 189, 0.356);">
+          <div style="margin-left: 8.1%;">
+            <img id="logopagpadrao" src="../../images/jericologo.png">
+          </div>
           <div class="card col-lg-4 mx-auto">
             <div class="card-body px-5 py-5">
               <h3 class="card-title text-left mb-3">Login</h3>
