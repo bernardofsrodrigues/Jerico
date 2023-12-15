@@ -19,7 +19,7 @@ async function cadastrarConsignataria(novaConsignataria) {
 
     document.getElementById("loading").style.display = "block";
 
-    const url = 'https://consultconsig.azurewebsites.net/api/consignatarias';
+    const url = 'http://carlosjunior007-001-site1.etempurl.com/api/consignatarias';
 
     const data = JSON.stringify({
         nome: novaConsignataria.nome,
